@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheather Checker</title>
+    <link rel="shortcut icon" href="https://cdn.jim-nielsen.com/ios/512/weather-2021-12-07.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/ecfa98c65d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;700&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+body{
+    background: url(https://i.pinimg.com/564x/4a/52/a5/4a52a5f2aa9a0783495e608c47f6b412.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    height: 100vh;
+}
+.container{
+    width: 90%;
+    height: 80vh;
+    background: rgba(24, 24, 27, 0.6);
+    color: #fff;
+    margin: 100px auto 0;
+    text-align: center;   
+    display: flex;
+    border:  3px solid #f1f1f1;;
+    border-radius: 20px;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+.main{
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.side_bar{
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #555;
+    padding-left: 20px;
+    flex: 1;
+    gap: 60px;
+}
+.search{
+    display: flex;
+    width: 100%;
+    gap: 30px;
+}
+.search > input{
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #fff;
+    padding: 10px 25px;
+    height: 50px;
+    font-size: 18px;
+    border-bottom: 1px solid #555;
+}
+.search > button{
+    border: 0;
+    outline: 0;
+    background: #ebfffc;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.search > button:hover{
+    background: linear-gradient(135deg, #00feba, #5b548a);
+}
+.details{
+    border-bottom: 1px solid #555;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: start;
+}
+.cloudy{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 07px;
+}
+.cloudy > img{
+    height: 30px;
+    width: 30px;
+}
+.Cloudy{
+    margin-left: 120px;
+}
+.humidity{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 07px;
+}
+.humidity > img{
+    height: 30px;
+    width: 30px;
+}
+.Humidity{
+    margin-left: 108px;
+}
+.wind{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 07px;
+}
+.wind > img{
+    height: 30px;
+    width: 30px;
+}
+.Wind{
+    margin-left: 82px;
+}
+.datetime{
+    align-self: flex-end;
+     margin-top: auto;
+    color: #fff;
+    font-family: "segoe UI", sans-serif;
+    width: 240px;
+    padding: 15px 10px;
+}
+
+.date{
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.time{
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time span:not(:last-child){
+    position: relative;
+    margin: 0 5px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 3px;
+}
+.time span:last-child{
+    background: #2E94E3;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 5px;
+    padding: 0 5px;
+}
+
+.temp_logo{
+    display: flex;
+    gap: 30px;
+    padding: 20px;
+}
+.weather_icon{
+    height: 100px;
+    width: 100px;
+}
+.location_details{
+    font-size: 45px;
+    margin-top: -30px; 
+}
+.temperature{
+    font-size: 80px;
+}
+.forecast{
+    margin-top: -40px;
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.location_details{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    
+}
+.tem_feel{
+    display: flex;
+    font-size: 25px;
+    gap: 10px;
+}
+.error{
+    font-size: 20px;
+    display: none;
+}
+
+@media only screen and (max-width : 851px){
+
+    .container{
+        overflow: scroll;
+        font-size: 20px;
+        display: flex;
+        gap: 30px;    
+        padding: 10px; 
+        margin: 50px auto 0;
+
+    }
+    .side_bar{
+        padding: 0;
+        margin: 0;
+        border: 0;
+    }
+    .search_bar{
+        width: 200px;
+    }
+    .datetime{
+        justify-content: center;
+        align-items: center;  
+    }
+    .temperature{
+        font-size: 50px ;
+    }
+    .weather_icon{
+        height: 80px;
+        width: 80px;
+    }
+    .fa-search{
+        width: 20px;
+    }
+    .location{
+        font-size: 30px;
+    }
+    .search{
+        display: flex;
+        width: 100%;
+    }
+    .search > input{
+        border: 0;
+        outline: 0;
+        background: transparent;
+        color: #fff;
+        height: 40px;
+        font-size: 14px;
+       
+    }
+    .search > button{
+        border: 0;
+        outline: 0;
+        background: #ebfffc;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+    }
+
+    .details{
+        
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: start;
+    }
+    .details > h2{
+        font-size: 20px;
+    }
+    .cloudy{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        gap: 07px;
+    }
+    .cloudy > img{
+        height: 20px;
+        width: 20px;
+    }
+    .Cloudy{
+        margin-left: 100px;
+    }
+    .humidity{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        gap: 07px;
+    }
+    .humidity > img{
+        height: 20px;
+        width: 20px;
+    }
+    .Humidity{
+        margin-left: 82px;
+    }
+    .wind{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        gap: 07px;
+    }
+    .wind > img{
+        height: 20px;
+        width: 20px;
+    }
+    .Wind{
+        margin-left: 40px;
+    }
+    .forecast{
+        margin-top: -50px;
+        text-align: start;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .forecast > h2{
+        font-size: 20px;
+    }
+    .forecast_item{
+        font-size: 20px;
+
+    }
+    .datetime{
+        display: none;
+    }
+
+}
+
+.forecast_item{
+    display: flex;
+    margin-right: 20px ;
+}
+.longitude{
+    margin-left: 80px;
+}
+.latitude{
+    margin-left: 93px;
+}
+    </style>
+</head>
+
+<body onload="initClock()">
+    <div class="container">
+        <div class="main">
+            <div class="temp_logo">
+                <h1 class="temperature">00°c</h1>
+                <img src="https://www.freeiconspng.com/thumbs/cloud-rain-icons/cloud-rain-icon-2.png" class="weather_icon">
+            </div>
+            <div class="location_details">
+                <h2 class="location">City</h2>
+            </div>
+            <div class="error">
+                <p>Invalid city name</p>
+            </div>
+            <div class="tem_feel">
+                <p>Feel Like : </p>
+                <p class="feel"> 00°c</p>
+            </div>
+            <div class="datetime">
+                <div class="date">
+                    <span id="dayname">Day</span>,
+                    <span id="month">Month</span>
+                    <span id="daynum">Day</span>,
+                    <span id="year">Year</span>
+                </div>
+                <div class="time">
+                    <span id="hour">00</span>:
+                    <span id="minutes">00</span>:
+                    <span id="seconds">00</span>
+                    <span id="peroid">PM</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="side_bar">
+            <div class="search">
+                    <input type="text" placeholder="Enter City Name" spellcheck="false" class="search_bar">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+            <div class="details">
+                <h2>Wheather Details : </h2>
+                <div class="cloudy">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1163/1163634.png" >
+                    <p>Cloudy</p>
+                    <p class="Cloudy">50%</p>
+                </div>
+                <div class="humidity">
+                    <img src="https://cdn-icons-png.flaticon.com/512/219/219816.png">
+                    <p>Humidity</p>
+                    <p class="Humidity">50%</p>
+                </div>
+                <div class="wind">
+                    <img src="https://icons.veryicon.com/png/o/weather/weather-8/weather-strong-wind.png">
+                    <p>Wind Speed</p>
+                    <p class="Wind">50 km/h</p>
+                </div>
+            </div>
+            <div class="forecast">
+                <h2> Other Details : </h2>
+                <div class="forecast_item">
+                    <p>1. Longitude</p>
+                    <div class="longitude">00</div>
+                </div>
+                <div class="forecast_item">
+                    <P>2. Latitude</P>
+                    <div class="latitude">00</div>
+                </div>
+              
+            </div>
+        </div>       
+    </div>
+
+
+
+    <script type="text/javascript">
+        function updateClock(){
+            var now = new Date();
+            var dname = now.getDay(),
+                mo = now.getMonth(),
+                dnum = now.getDate(),
+                yr = now.getFullYear(),
+                hou = now.getHours(),
+                min = now.getMinutes(),
+                sec = now.getSeconds(),
+                pe = "AM";
+
+                if(hou == 0 ){
+                    hou = 12;
+                }
+                if(hou > 12){
+                    hou = hou - 12;
+                    pe = "PM";
+                }
+
+                Number.prototype.pad = function(digits){
+                    for(var n = this.toString(); n.length < digits; n = 0 + n);
+                    return n;
+                }
+
+                var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                var ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "peroid"];
+                var values = [week[dname], months[mo], dnum.pad(2), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
+
+                for(var i = 0; i < ids.length; i++)
+                document.getElementById(ids[i]).firstChild.nodeValue =  values[i];
+        }
+
+        function initClock(){
+            updateClock();
+            window.setInterval("updateClock()", 1);
+        }
+
+        var apikey = "8a33515ff148595b6a2a27da8ce1f523";
+        var apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+        var searchBox = document.querySelector(".search input");
+        var searchBtn = document.querySelector(".search button");
+        var weatherIcon = document.querySelector(".weather_icon");
+
+        async function checkWheather(location){
+            var response = await fetch(apiUrl + location +`&appid=${apikey}`);
+
+            if(response.status == 404){
+                document.querySelector(".error").style.display = "block";
+                document.querySelector(".location_details").style.display = "none";
+                document.querySelector(".temp_logo").style.display = "none";
+                document.querySelector(".tem_feel").style.display = "none";
+            }else{
+                var data = await response.json();
+
+                console.log(data);
+                document.querySelector(".location").innerHTML = data.name;
+                document.querySelector(".temperature").innerHTML = Math.round(data.main.temp) + "°c" ;
+                document.querySelector(".Humidity").innerHTML = data.main.humidity +  "%";
+                document.querySelector(".Cloudy").innerHTML = data.clouds.all + "%";
+                document.querySelector(".Wind").innerHTML = data.wind.speed + "km/h";
+                document.querySelector(".feel").innerHTML = data.main.feels_like + "°c" ;
+                document.querySelector(".longitude").innerHTML = Math.round(data.coord.lon) + "%";
+                document.querySelector(".latitude").innerHTML = Math.round(data.coord.lat) + "%";
+
+
+
+                if(data.weather[0].main == "Clouds"){
+                    weatherIcon.src = "https://cdn-icons-png.flaticon.com/512/1163/1163634.png";
+                }
+                else  if(data.weather[0].main == "Clear"){
+                    weatherIcon.src = "https://cdn-icons-png.flaticon.com/512/3222/3222807.png";
+                }
+                else  if(data.weather[0].main == "Rain"){
+                    weatherIcon.src = "https://www.freeiconspng.com/thumbs/cloud-rain-icons/cloud-rain-icon-2.png";
+                }
+                else  if(data.weather[0].main == "Drizzle"){
+                    weatherIcon.src = "https://cdn-icons-png.flaticon.com/512/2412/2412691.png";
+                }
+                else  if(data.weather[0].main == "Haze"){
+                    weatherIcon.src = "https://cdn-icons-png.flaticon.com/512/1779/1779807.png";
+                }
+                else  if(data.weather[0].main == "Smoke"){
+                    weatherIcon.src = "https://cdn-icons-png.flaticon.com/512/4414/4414055.png";
+                }
+                else  if(data.weather[0].main == "Mist"){
+                    weatherIcon.src = "https://cdn-icons-png.flaticon.com/512/175/175959.png";
+                }   
+
+                document.querySelector(".error").style.display = "none";
+                document.querySelector(".location_details").style.display = "block";
+                document.querySelector(".temp_logo").style.display = "flex";
+                document.querySelector(".tem_feel").style.display = "flex";
+
+                }
+
+        }
+
+        searchBtn.addEventListener("click", () => {
+            checkWheather(searchBox.value);
+        })
+
+    </script>
+</body>
+</html>
